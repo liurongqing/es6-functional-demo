@@ -5,19 +5,37 @@ import { some } from './utils/some'
 import { tap } from './utils/tap'
 import { unary } from './utils/unary'
 import { map } from './utils/map'
+import { concatAll } from './utils/concatAll'
+import { curry } from './utils/curry'
+import { curryEs6 } from './utils/curry-es6'
 
-var ar = [
-  { a: 1, b: 2 },
-  { a: 11, b: 22 },
-]
-var br = map(ar, (value) => value)
+function multiply(a: number, b: number, c: number) {
+  return a * b * c
+}
+var a = curryEs6(multiply)(2, 3)
+console.log(a)
 
-console.log(ar);
-console.log(br);
-ar[0].a = 100
-console.log(ar);
-console.log(br);
+// var a = curry(multiply)(1)(3)(4)
+// console.log(a)
 
+// var a = [{ a: 1, b: 1 }, [{ a: 2, b: 2 }, [{ a: 3, b: 3 }, [{ a: 4, b: 4 }]]]]
+// // console.log(concatAll(a))
+// console.log(a.flat(Infinity))
+
+// console.log(a.flat())
+
+// var ar = [
+//   { a: 1, b: 2 },
+//   { a: 11, b: 22 },
+// ]
+// // var br = map(ar, (value) => value)
+// var br = ar.map(v => v)
+
+// console.log(ar);
+// console.log(br);
+// ar[0].a = 100
+// console.log(ar);
+// console.log(br);
 
 // var data = ['1', '2', '3', '4'].map(parseInt)
 // var data = ['1', '2', '3', '4'].map(unary(parseInt))
